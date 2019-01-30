@@ -48,16 +48,7 @@ var calculMain = function() {
 		}})
 
 	if (document.getElementById('forme-1').value === "Residential"){
-		/*if($(".form-control-1:empty").length == 0){
-			var x = ($())
-			for(var i = 0; i <= )
-			var residentiel = calculResi();
-			calculPrix(residentiel);
-		}
-		else {
-			document.getElementById('float-right-1').innerHTML = "";
-			document.getElementById('float-right-3').innerHTML = "";
-		}*/
+
 		if(document.getElementById('resi-app').value !== "" && document.getElementById('resi-floor').value !== ""){
 			var residentiel = calculResi();
 			calculPrix(residentiel);
@@ -159,6 +150,7 @@ var calculCommerce = function(){
 	}
 	return nbr_ascen;
 }
+
 // Fcuntion calcul Corporatif/Hybride-----------------------------------------------------
 var calculCorpo = function(){
 
@@ -278,15 +270,6 @@ var calculPrix = function(totalAscensor){
 		document.getElementById('float-right-3').innerHTML = finalPrice.toFixed(2) + " $";
 	}
 }
-
- var ifEmpty = function(){
-
-	for (var i = 0; i <= ($('.form-control-1').length); i++) {
-		if(($('.form-control-1')[i].value) !== "");
-		var e = calculResi();
-		calculPrix(e);
-	}
- }
 
 /**
 	BROWSER HASH - from php/contact.php redirect!
