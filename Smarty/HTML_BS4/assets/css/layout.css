@@ -87,7 +87,7 @@ body.bg-grey #wrapper {
 section {
 	display: block;
 	position: relative;
-	padding: 100px 0;
+	padding: 50px 0;
 	border-bottom:rgba(0,0,0,0.1) 1px solid;
 	background-color: #fff;
 
@@ -150,7 +150,7 @@ section header.section-header {
 
 	div.alternate,
 	section.alternate {
-		background-color:rgba(0,0,0,0.02) !important;
+		background-color:rgba(0,0,0,0) !important;
 	}
 
 	section.dark {
@@ -5447,17 +5447,16 @@ section.page-header * {
     padding-right: 16px;
     padding-top: 10px !important;
     padding-bottom: 10px!important;
-    font-size: 18px !important;
-    line-height: 1.3333333 !important;
+    font-size: auto !important;
+	line-height: 1.3333333 !important;
+	width:auto;
+	
 }
 
 .btn {
-	font-size: 15px;
+	font-size: auto;
 	line-height: 1.6;
 }
-
-
-
 
 .btn-toolbar .btn, 
 .btn-toolbar .btn-group, 
@@ -7354,6 +7353,7 @@ section#slider:not(.custom-form) .btn-default {
 		background-color:transparent;
 		border-color:#fff;
 		border-width:2px;
+		font-size: auto;
 	}
 	#slider:not(.custom-form) .btn-default:hover,
 	.slider .btn-default:hover {
