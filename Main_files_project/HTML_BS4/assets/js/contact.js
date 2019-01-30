@@ -62,7 +62,6 @@ var calculMain = function() {
 			document.getElementById('float-right-1').innerHTML = "";
 			document.getElementById('float-right-3').innerHTML = "";
 		}
-
 	}	
 
 	else if (document.getElementById('forme-1').value === "Corporatif"){
@@ -253,7 +252,11 @@ var radioButton = function(){
 return radioValue;
 }
 
-//  Function for radio-button for standard/premium/excelium-------------------------------------------------
+/*  Function for radio-button for standard/premium/excelium-------------------------------------------------
+ Calcul le prix et l'affichge 
+ param : le total d'ascensors 
+
+ */
 var calculPrix = function(totalAscensor){
 
 	var finalPrice;
