@@ -2,7 +2,7 @@
 *************************************************** **/
 var _hash = window.location.hash;
 
-//-------------------------------------------------------------------------
+// Events -----------------------------------------------------------------------
 $(".row-1, .row-2, .row-3, .row-4").hide()
 
 $("input").keyup(function() {	
@@ -14,7 +14,9 @@ var choice = document.getElementById('forme-1');
 choice.addEventListener("change", department);
 choice.addEventListener("change", clear);
 
-// Function Choice of sector ---------------------------------------------------
+/* Function Choice of sector ---------------------------------------------------
+	show and hide inputs
+*/
 var department = function(){
 	var choice = document.getElementById('forme-1').value;	
 
@@ -38,7 +40,10 @@ var department = function(){
 		$(".row-1, .row-2, .row-3, .row-4").hide()
 	}	
 }
-//  Main fonction ------------------------------------------------------------
+/*  Main fonction --------------------------------------------------------------
+	check what choice user made. Than check if input all filed with value
+	than call function to calcul
+*/
 var calculMain = function() {
 
 	$(".form-control-1, .form-control-2, .form-control-3, .form-control-4").each(function(){
@@ -119,6 +124,7 @@ var calculMain = function() {
 		}
 	}
 }
+
 // Function that reset all inputs -----------------------------------------------------
 var clear = function(){
 	document.getElementById('float-right-1').innerHTML = "";
@@ -129,7 +135,9 @@ var clear = function(){
 	})
 }
 
-// Function calcul Commerce -------------------------------------------------------------
+/* Function calcul Commerce -------------------------------------------------------------
+	calcul number of ascensors for commercial sector
+*/
 var calculCommerce = function(){
 
 	var nbr_ascen = parseInt(document.getElementById('com-asce').value);
@@ -150,7 +158,9 @@ var calculCommerce = function(){
 	return nbr_ascen;
 }
 
-// Fcuntion calcul Corporatif/Hybride-----------------------------------------------------
+/* Function calcul Corporatif/Hybride-----------------------------------------------------
+	calcul number of ascensors for corpo/hybride sector
+*/
 var calculCorpo = function(){
 
 	if (document.getElementById('forme-1').value === 'Corporatif'){
@@ -186,7 +196,9 @@ var calculCorpo = function(){
 		return total;
 	}
 }
-// Calcul for Residential ---------------------------------------------
+/* Calcul for Residential ---------------------------------------------
+	calcul number of ascensors for residential sector
+*/
 var calculResi = function(){
 
 		var app = parseInt(document.getElementById('resi-app').value);
@@ -220,54 +232,36 @@ var calculResi = function(){
 	}
 		}		
 	
-// Function for button radio  ---------------------------------------------------------------------------
-var radioButton = function(){
-
-	var radioValue = $("input[name='price']:checked").val();
-	document.getElementById('float-right-2').innerHTML = $("input[name='price']:checked").val() + " $";
-
-	if (radioValue === "7565"){
-		document.getElementById('fees').innerHTML = "10%";
-	}
-	else if (radioValue === "12 345"){
-		document.getElementById('fees').innerHTML = "13%";
-	}
-	else {
-		document.getElementById('fees').innerHTML = "16%";
-	}
-
-	$("input[name='price']").change(function() {
-		radioValue = $("input[name='price']:checked").val();
-		document.getElementById('float-right-2').innerHTML = radioValue + " $"; 
-		if (radioValue === "7565"){
-			document.getElementById('fees').innerHTML = "10%";
-		}
-		else if (radioValue === "12 345"){
-			document.getElementById('fees').innerHTML = "13%";
-		}
-		else {
-			document.getElementById('fees').innerHTML = "16%";
-		}
-	})	
-return radioValue;
-}
-
 /*  Function for radio-button for standard/premium/excelium-------------------------------------------------
- Calcul le prix et l'affichge 
- param : le total d'ascensors 
-
+ 	calcul prices and show them 
+ 	param : total ascensors 
  */
 var calculPrix = function(totalAscensor){
 
+	var radioValue = $("input[name='price']:checked").val();
+	$("input[name='price']").change(function() {
+
+		var radioValue = $("input[name='price']:checked").val();
+		return radioValue;
+	})
 	var finalPrice;
-	if (radioButton() === "7565"){
+	if (radioValue === "7565"){
 		finalPrice = (totalAscensor * 7565) * 1.1;
+
+		document.getElementById('fees').innerHTML = "10%";
+		document.getElementById('float-right-2').innerHTML = radioValue + " $";
 	}
-	else if (radioButton() === "12 345"){
+	else if (radioValue === "12 345"){
 		finalPrice = (totalAscensor * 12345) * 1.3;
+
+		document.getElementById('fees').innerHTML = "13%";
+		document.getElementById('float-right-2').innerHTML = radioValue + " $";
 	}
-	else if (radioButton() === "15 400"){
+	else if (radioValue === "15 400"){
 		finalPrice = (totalAscensor * 15400) * 1.6;
+
+		document.getElementById('fees').innerHTML = "16%";
+		document.getElementById('float-right-2').innerHTML = radioValue + " $";
 	}
 	if(!isNaN(finalPrice)){
 		document.getElementById('float-right-3').innerHTML = finalPrice.toFixed(2) + " $";
