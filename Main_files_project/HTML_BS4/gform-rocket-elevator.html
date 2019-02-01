@@ -349,21 +349,23 @@
                                         </div>
                                     </div>
                                     <div class="row-1">
+										<form method="post" action ="/resi">
                                             <div class="col-md-4">
                                                     <label class="resi" for="resi-app">Number of appartements * <span class="resi-a">Exclude basements</span></label>
-                                                    <input required type="text" value="" class="form-control-1" name="resi-app" id="resi-app">
+                                                    <input required type="text" value="" class="form-control-1" name="resi[app]" id="resi-app">
                                                 </div>
                                             <div class="col-md-4">
                                                     <label for="resi-floor">Number of floors *</label>
-                                                    <input required type="text" value="" class="form-control-1" name="resi-floor" id="resi-floor">
+                                                    <input required type="text" value="" class="form-control-1" name="resi[floor]" id="resi-floor">
                                             </div>
                                                 <div class="col-md-4">
                                                     <label for="resi-quar">Number of basements</label>
-                                                    <input required type="text" value="" placeholder="Not Required" class="form-control-1" name="resi-quar" id="resi-quar">
+                                                    <input required type="text" value="" placeholder="Not Required" class="form-control-1" name="resi[quar]" id="resi-quar">
                                                 </div>
-
+										</form>	
                                     </div>
 									<div class="row-2">
+										<form method="post" action ="/">
                                             <div class="col-md-4">
                                                     <label for="contact:name">Number of ascensors *</label>
                                                     <input required type="text" value="" class="form-control-4" name="contact[name][required]" id="com-asce">
@@ -383,7 +385,8 @@
                                             <div class="col-md-4">
                                                     <label for="contact:name">Number of stores </label>
                                                     <input required type="text" value="" placeholder="Not Required" class="form-control-4" name="contact[name][required]" id="com-com">
-                                                </div>
+												</div>
+										</form>
 													
                                     </div>
 
