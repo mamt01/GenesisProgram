@@ -1175,31 +1175,6 @@
 
 
 		// Top Navigation
-		var _container1 = jQuery(".nav-onepage");
-
-		if(_container1.length > 0) {
-
-			loadScript(plugin_path + 'jquery.nav.min.js', function() {
-
-				jQuery(_container1).onePageNav({
-					currentClass: 		'active',
-					changeHash: 		false,
-					scrollSpeed: 		750,
-					scrollThreshold: 	0.5,
-					filter: 			':not(.external)',
-					easing: 			'easeInOutExpo'
-				});
-
-				// Close Nav on menu click
-				jQuery("#topMain.nav-onepage li>a").bind("click", function() {
-					if(window.width < 960) {
-						jQuery("button.btn-mobile").trigger('click');
-					}
-				});
-
-			});
-		
-		}
 
 
 		// Bullet Navigation
