@@ -1,9 +1,10 @@
 /**	CONTACT FORM
 *************************************************** **/
 var _hash = window.location.hash;
-//-------------------------------------------------------------------------
-$(".row-1, .row-2, .row-3, .row-4").hide()
 
+// Call main function and trigger event ---------------------------------------------------
+
+$(".row-1, .row-2, .row-3, .row-4").hide()
 
 $("input").keyup(function() {	
 
@@ -42,8 +43,8 @@ var department = function(){
 		$(".row-1, .row-2, .row-3, .row-4").hide()
 	}	
 }
-//  Main fonction ----------------------------------------------------------------	
-// check if all inputs are not empty and call the right function for right sector
+//  Main fonction =========================================================================
+// check if all inputs are not empty and are numbers, if true ; send data to server 
 
 var calculMain = function() {
 	 
@@ -51,6 +52,8 @@ var calculMain = function() {
 		if ($(this).val() === ""){
 			clearPrice();
 		}})
+
+// residential sector ------------
 
 	if (document.getElementById('forme-1').value === "Residential"){
 
@@ -68,18 +71,18 @@ var calculMain = function() {
 				var residential_object = {app: $('#resi-app').val(), floor: $("#resi-floor").val(), choice: $("input[name='price']:checked").val()};
 				}
 
-			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/resi/', residential_object, function (data, status) {
+			$.post('//Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/resi/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
 				$("#float-right-2").html(data.price.unit);
 			 }); 
-
 		}
 		else {
 			clearPrice();
 		}
 	}	
+// Corporate sector --------
 
 	else if (document.getElementById('forme-1').value === "Corporatif"){
 
@@ -100,7 +103,7 @@ var calculMain = function() {
 				var residential_object = {floor: $('#cor-floor').val(), base: $("#cor-quar").val(), occu: $('#cor-occu').val(), choice: $("input[name='price']:checked").val()};
 				}
 
-			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/corpo/', residential_object, function (data, status) {
+			$.post('//Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/corpo/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
@@ -112,7 +115,8 @@ var calculMain = function() {
 			clearPrice();
 		}
 	}	
-	
+	// hybride sector -------------
+
 	else if (document.getElementById('forme-1').value === "Hybride"){
 
 		if(document.getElementById('hyb-floor').value !== "" && document.getElementById('hyb-quar').value !== "" &&
@@ -132,7 +136,7 @@ var calculMain = function() {
 				var residential_object = {floor: $('#hyb-floor').val(), base: $("#hyb-quar").val(), occu: $('#hyb-occu').val(), choice: $("input[name='price']:checked").val()};
 				}
 
-			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/hyb/', residential_object, function (data, status) {
+			$.post('//Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/hyb/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
@@ -144,7 +148,7 @@ var calculMain = function() {
 			clearPrice();
 		}
 	}	
-
+// Commercial sector -----------
 	else if (document.getElementById('forme-1').value === "Commercial"){
 
 		if (document.getElementById('com-asce').value !== ""){
@@ -160,7 +164,7 @@ var calculMain = function() {
 			else { 
 				var residential_object = {base: $('#com-asce').val(), choice: $("input[name='price']:checked").val()};
 			}
-			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/com/', residential_object, function (data, status) {
+			$.post('//Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/com/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
@@ -173,14 +177,16 @@ var calculMain = function() {
 		}
 	}
 }
-// Function that reset all inputs and prices-----------------------------------------------------
+
+// Function that reset all inputs and prices to empty -----------------------------------------------------
+// calling fucntion clearprice() 
 var clear = function(){
 	clearPrice();
 	$(".form-control-1, .form-control-2, .form-control-3, .form-control-4").each(function(){
 		$(this).val("");
 	})
 }
-// Function that reset all prices-----------------------------------------------------
+// Function that reset all prices to empty----------------------------------------------------------------
 var clearPrice = function(){
 	document.getElementById('fees').innerHTML = "";
 	document.getElementById('float-right-2').innerHTML ="";

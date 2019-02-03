@@ -6,6 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 var path = require('path');
 
+
 app.use(bodyParser.urlencoded({
   extended: false
   }));
@@ -23,7 +24,10 @@ app.use(function(req, res, next) {
   next();
  });
 
-// Send data calculated in for residential sector -------------------------------------------
+ const port = process.env.PORT || 3000
+app.listen(port, () => console.log(`Listening on port ${port}`));
+
+// respond data calculated for residential sector ----------------------------------------------
 app.post('/resi/', function(req, res){
     let inputContent = req.body;
 
@@ -34,7 +38,7 @@ app.post('/resi/', function(req, res){
     res.json({ascensor: residential, prix: finalP, price: standardFee});
 });
 
-// Send data calculated in for corpo sector ----------------------------------------------
+// respond data calculated for corpo sector ------------------------------------------------
 app.post('/corpo', function(req, res){
   let inputContent = req.body;
 
@@ -46,7 +50,7 @@ app.post('/corpo', function(req, res){
   
 })
 
-// Send data calculated in for hybride sector ----------------------------------------------
+// respond data calculated for hybride sector ----------------------------------------------
 app.post('/hyb', function(req, res){
   let inputContent = req.body;
 
@@ -58,7 +62,7 @@ app.post('/hyb', function(req, res){
   
 })
 
-// Send data calculated in for commercial sector ----------------------------------------------
+// respond data calculated for commercial sector ----------------------------------------------
 app.post('/com', function(req, res){
   let inputContent = req.body;
 
@@ -70,12 +74,10 @@ app.post('/com', function(req, res){
   
 })
 
-//var port = 3000
-//app.listen(port);
 
 /* Calcul for Residential ------------------------------------------------------------
   parameters : number of appartements / number of floors
-	return and show number of elevator needed for residential
+	return number of elevators needed for residential
 */
 var calculResi = function(appar, floors){
 
@@ -113,7 +115,7 @@ var calculCommerce = function(ascensor){
 
 /* Calcul for final price ------------------------------------------------------------
   parameters : number of ascensors calculated / choice au service level (radio-button)
-	return finale price calculated and show it
+	return finale price calculated 
 */
 var calculPrix = function(totalAscensor, radio_val){
 
