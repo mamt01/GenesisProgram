@@ -105,7 +105,6 @@
 		_lightbox();
 		_mixitup();
 		_animate();
-		_onepageNav();
 		_scrollTo(false, 0);
 		_parallax();
 		_video();
@@ -1171,34 +1170,6 @@
 
 /** Onepage Nav
  **************************************************************** **/
-	function _onepageNav() {
-
-
-		// Top Navigation
-
-
-		// Bullet Navigation
-		var _container2 = jQuery("#nav-bullet");
-
-		if(_container2.length > 0) {
-
-			loadScript(plugin_path + 'jquery.nav.min.js', function() {
-
-				jQuery(_container2).onePageNav({
-					currentClass: 		'active',
-					changeHash: 		false,
-					scrollSpeed: 		750,
-					scrollThreshold: 	0.5,
-					filter: 			':not(.external)',
-					easing: 			'easeInOutExpo'
-				});
-
-			});
-		
-		}
-
-
-	}
 
 
 
