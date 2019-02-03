@@ -68,7 +68,7 @@ var calculMain = function() {
 				var residential_object = {app: $('#resi-app').val(), floor: $("#resi-floor").val(), choice: $("input[name='price']:checked").val()};
 				}
 
-			$.post('RocketElevators-env.jducamqwkd.us-east-2.elasticbeanstalk.com/resi/', residential_object, function (data, status) {
+			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/resi/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
@@ -100,7 +100,7 @@ var calculMain = function() {
 				var residential_object = {floor: $('#cor-floor').val(), base: $("#cor-quar").val(), occu: $('#cor-occu').val(), choice: $("input[name='price']:checked").val()};
 				}
 
-			$.post('RocketElevators-env.jducamqwkd.us-east-2.elasticbeanstalk.com/corpo/', residential_object, function (data, status) {
+			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/corpo/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
@@ -132,7 +132,7 @@ var calculMain = function() {
 				var residential_object = {floor: $('#hyb-floor').val(), base: $("#hyb-quar").val(), occu: $('#hyb-occu').val(), choice: $("input[name='price']:checked").val()};
 				}
 
-			$.post('RocketElevators-env.jducamqwkd.us-east-2.elasticbeanstalk.com/hyb/', residential_object, function (data, status) {
+			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/hyb/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
@@ -160,7 +160,7 @@ var calculMain = function() {
 			else { 
 				var residential_object = {base: $('#com-asce').val(), choice: $("input[name='price']:checked").val()};
 			}
-			$.post('RocketElevators-env.jducamqwkd.us-east-2.elasticbeanstalk.com/com/', residential_object, function (data, status) {
+			$.post('Rocket-env.nrbm9qmsij.us-east-2.elasticbeanstalk.com/com/', residential_object, function (data, status) {
 				$("#float-right-1").html(data.ascensor);
 				$("#float-right-3").html(data.prix + " $");
 				$("#fees").html(data.price.fee);
